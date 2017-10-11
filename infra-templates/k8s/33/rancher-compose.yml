@@ -23,6 +23,7 @@
     options:
      - rancher
      - aws
+     - azure
   - variable: RBAC
     description: Enable Kubernetes role-based access control with integrated Rancher authentication.
     label: Kubernetes RBAC
