@@ -23,6 +23,9 @@ kubelet:
         - --allow-privileged=true
         - --register-node=true
         - --cloud-provider=${CLOUD_PROVIDER}
+        {{- if eq .Values.CLOUD_PROVIDER "azure" }}
+        - --cloud-config=/etc/kubernetes/azure-cloud-config
+        {{- end }}
         - --healthz-bind-address=0.0.0.0
         - --cluster-dns=${DNS_CLUSTER_IP}
         - --cluster-domain=cluster.local
@@ -75,6 +78,9 @@ kubelet-unschedulable:
         - --allow-privileged=true
         - --register-node=true
         - --cloud-provider=${CLOUD_PROVIDER}
+        {{- if eq .Values.CLOUD_PROVIDER "azure" }}
+        - --cloud-config=/etc/kubernetes/azure-cloud-config
+        {{- end }}
         - --healthz-bind-address=0.0.0.0
         - --cluster-dns=${DNS_CLUSTER_IP}
         - --cluster-domain=cluster.local
@@ -179,6 +185,9 @@ kubernetes:
         - --insecure-bind-address=0.0.0.0
         - --insecure-port=0
         - --cloud-provider=${CLOUD_PROVIDER}
+        {{- if eq .Values.CLOUD_PROVIDER "azure" }}
+        - --cloud-config=/etc/kubernetes/azure-cloud-config
+        {{- end }}
         - --allow_privileged=true
         - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
@@ -271,6 +280,10 @@ controller-manager:
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --allow-untagged-cloud
         - --cloud-provider=${CLOUD_PROVIDER}
+        {{- if eq .Values.CLOUD_PROVIDER "azure" }}
+        - --cloud-config=/etc/kubernetes/azure-cloud-config
+        {{- end }}
+
         - --address=0.0.0.0
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
