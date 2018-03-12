@@ -4,7 +4,7 @@
 
 This volume driver delivers access tokens per-container to authenticate with Hashicorp Vault.
 
-## Changelog v0.3.0
+## Changelog v0.3.2
 
 
 ## Terms
