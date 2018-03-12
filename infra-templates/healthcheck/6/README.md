@@ -2,9 +2,7 @@
 
 This stack provides a healthcheck service
 
-### Changelog for v0.3.3-1
-* Add re-initializing and initializing timeouts for the healthcheck service 
+### Changelog for v0.3.4
 
-#### Healthcheck [rancher/healthcheck:v0.3.3]
-* Added health check for sidekick service containers using networkFrom primary
-* Changed to use Rancher Metadata IP directly to avoid name resolution
+#### Healthcheck [rancher/healthcheck:v0.3.4]
+* During service upgrade with healthcheck changes, use the healthcheck on the container.
