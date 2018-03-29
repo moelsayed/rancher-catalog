@@ -1,23 +1,17 @@
-## Kubernetes v1.9.5
+## Kubernetes v1.10.0
 
 ### Software Versions
 
-* Kubernetes v1.9.5
+* Kubernetes v1.10.0
 * Etcd v2.3.7
 
 ### Upgrading to this Version
 
 Warning: The existing template version _must be_ `v1.2.4-rancher9` or later. Ignoring this will result in data loss. For older templates, please first upgrade to `v1.5.4-rancher1`.
 
-### Changelog for Kubernetes v1.9.5
+### Changelog for Kubernetes v1.10.0
 
-* Switched the default add-on images (dashboard, dns, dashboard, etc) to be pulled from Rancher's repo in Dockerhub instead of GCR. The location is still configurable, but the default pulls from Rancher instead of GCR.
-* Fixed an issue with conntrack entries being deleted incorrectly for Service IP range.
-* Fixed an issue where add-ons might not be updated if using the same k8s image.
-* Secured kubelet port by no longer allowing anonymous requests.
-* Cleaned up some logging messages.
-* Fixed an issue where audit-logs were missing from the logs of the kube-api-server.
-* Fixed an issue where k8s certs were assuming k8s will be discovered using Rancher DNS.
+* Updated for the latest Kubernetes release.
 
 ### Required Open Ports on hosts
 

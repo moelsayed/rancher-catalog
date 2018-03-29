@@ -1,7 +1,7 @@
 
-{{- $k8sImage:="rancher/k8s:v1.9.5-rancher1-1" }}
+{{- $k8sImage:="rancher/k8s:v1.10.0-rancher1-1" }}
 {{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
-{{- $kubectldImage:="rancher/kubectld:v0.8.6" }}
+{{- $kubectldImage:="rancher/kubectld:v0.8.7" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.7" }}
 {{- $k8sAuthImage:="rancher/kubernetes-auth:v0.0.8" }}
@@ -20,7 +20,6 @@ kubelet:
     command:
         - kubelet
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
-        - --allow-privileged=true
         - --register-node=true
         - --cloud-provider=${CLOUD_PROVIDER}
         {{- if eq .Values.CLOUD_PROVIDER "azure" }}
@@ -86,7 +85,6 @@ kubelet-unschedulable:
     command:
         - kubelet
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
-        - --allow-privileged=true
         - --register-node=true
         - --cloud-provider=${CLOUD_PROVIDER}
         {{- if eq .Values.CLOUD_PROVIDER "azure" }}
@@ -213,7 +211,7 @@ kubernetes:
         {{- if eq .Values.CLOUD_PROVIDER "azure" }}
         - --cloud-config=/etc/kubernetes/cloud-provider-config
         {{- end }}
-        - --allow_privileged=true
+        - --allow-privileged=true
         - --admission-control=$ADMISSION_CONTROLLERS
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
         - --tls-cert-file=/etc/kubernetes/ssl/cert.pem
