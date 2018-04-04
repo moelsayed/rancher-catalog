@@ -230,6 +230,9 @@ kubernetes:
         {{- if eq .Values.RBAC "true" }}
         - --authorization-mode=RBAC
         {{- end }}
+        {{- if ne .Values.KUBEAPI_CIPHER_SUITES "" }}
+        - --tls-cipher-suites=${KUBEAPI_CIPHER_SUITES}
+        {{- end }}
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
         {{- if ne .Values.HTTP_PROXY "" }}
