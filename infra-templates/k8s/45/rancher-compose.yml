@@ -178,6 +178,11 @@
     required: true
     default: "10.43.0.1"
     type: string
+  - variable: KUBEAPI_CIPHER_SUITES
+    label: KubeAPI cipher suites
+    description: A comma-separated list of TLS cipher suites to be used by kubernetes api server. Available values can be found in (https://golang.org/pkg/crypto/tls/#pkg-constants). If not set, the default Go cipher suites will be used.
+    required: false
+    type: string
   - variable: DASHBOARD_CPU_LIMIT
     label: Kubernetes Dashboard CPU limit
     description: This is the CPU allocated for the Dashboard pod. The same value is used for resource request and resource limit.
