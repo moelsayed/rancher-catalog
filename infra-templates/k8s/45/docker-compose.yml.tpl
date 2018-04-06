@@ -38,6 +38,7 @@ kubelet:
         {{- else if (ne .Values.POD_INFRA_CONTAINER_IMAGE "") }}
         - --pod-infra-container-image=${POD_INFRA_CONTAINER_IMAGE}
         {{- end }}
+        - --tls-cipher-suites=${KUBERNETES_CIPHER_SUITES}
         {{- range $i, $elem := splitPreserveQuotes .Values.ADDITIONAL_KUBELET_FLAGS }}
         - {{ $elem }}
         {{- end }}
@@ -104,6 +105,7 @@ kubelet-unschedulable:
         - --pod-infra-container-image=${POD_INFRA_CONTAINER_IMAGE}
         {{- end }}
         - --register-schedulable=false
+        - --tls-cipher-suites=${KUBERNETES_CIPHER_SUITES}
         {{- range $i, $elem := splitPreserveQuotes .Values.ADDITIONAL_KUBELET_FLAGS }}
         - {{ $elem }}
         {{- end }}
@@ -230,9 +232,7 @@ kubernetes:
         {{- if eq .Values.RBAC "true" }}
         - --authorization-mode=RBAC
         {{- end }}
-        {{- if ne .Values.KUBEAPI_CIPHER_SUITES "" }}
-        - --tls-cipher-suites=${KUBEAPI_CIPHER_SUITES}
-        {{- end }}
+        - --tls-cipher-suites=${KUBERNETES_CIPHER_SUITES}
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
         {{- if ne .Values.HTTP_PROXY "" }}
