@@ -25,6 +25,7 @@ kubelet:
         {{- if eq .Values.CLOUD_PROVIDER "azure" }}
         - --cloud-config=/etc/kubernetes/cloud-provider-config
         {{- end }}
+        - --allow-privileged=true
         - --healthz-bind-address=0.0.0.0
         - --cluster-dns=${DNS_CLUSTER_IP}
         - --fail-swap-on=${FAIL_ON_SWAP}
@@ -91,6 +92,7 @@ kubelet-unschedulable:
         {{- if eq .Values.CLOUD_PROVIDER "azure" }}
         - --cloud-config=/etc/kubernetes/cloud-provider-config
         {{- end }}
+        - --allow-privileged=true
         - --anonymous-auth=false
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
         - --healthz-bind-address=0.0.0.0
