@@ -1,5 +1,5 @@
 ## Scheduler
 
-### Changelog for v0.8.3
+### Changelog for v0.8.3-1
 
-* Fixed a panic that could occur if metadata was not available
+* Make scheduler healthcheck configurable
