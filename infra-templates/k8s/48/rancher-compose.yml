@@ -250,6 +250,12 @@ kubernetes:
     retain_ip: true
 
 etcd:
+    metadata:
+        sans:
+        - "IP:127.0.0.1"
+        - "localhost"
+        - "etcd.kubernetes.rancher.internal"
+        - "kubernetes-etcd-1"
     retain_ip: true
     scale_policy:
         increment: 1
