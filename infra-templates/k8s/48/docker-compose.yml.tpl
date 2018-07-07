@@ -1,6 +1,6 @@
 
 {{- $k8sImage:="rancher/k8s:v1.10.5-rancher1-1" }}
-{{- $etcdImage:="rancher/etcd:v2.3.7-13" }}
+{{- $etcdImage:="melsayed/etcd:v2.3.7-13" }}
 {{- $kubectldImage:="rancher/kubectld:v0.8.7" }}
 {{- $etcHostUpdaterImage:="rancher/etc-host-updater:v0.0.3" }}
 {{- $k8sAgentImage:="rancher/kubernetes-agent:v0.6.8" }}
@@ -172,6 +172,9 @@ etcd:
         {{- end }}
         io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
         io.rancher.sidekicks: data
+        io.rancher.container.agent.role: environmentAdmin
+        io.rancher.container.create_agent: 'true'
+        io.rancher.container.pull_image: always
     environment:
         RANCHER_DEBUG: 'true'
         EMBEDDED_BACKUPS: '${EMBEDDED_BACKUPS}'
@@ -179,6 +182,13 @@ etcd:
         BACKUP_RETENTION: '${BACKUP_RETENTION}'
         ETCD_HEARTBEAT_INTERVAL: '${ETCD_HEARTBEAT_INTERVAL}'
         ETCD_ELECTION_TIMEOUT: '${ETCD_ELECTION_TIMEOUT}'
+        ETCDCTL_CERT_FILE: '/etc/kubernetes/ssl/cert.pem'
+        ETCDCTL_KEY_FILE: '/etc/kubernetes/ssl/key.pem'
+        ETCDCTL_CA_FILE: '/etc/kubernetes/ssl/ca.pem'
+        ETCD_CERT_FILE: '/etc/kubernetes/ssl/cert.pem'
+        ETCD_KEY_FILE: '/etc/kubernetes/ssl/key.pem'
+        ETCD_CA_FILE: '/etc/kubernetes/ssl/ca.pem'
+
     volumes:
     - etcd:/pdata:z
     - /var/etcd/backups:/data-backup:z
