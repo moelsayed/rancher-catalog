@@ -182,12 +182,12 @@ etcd:
         BACKUP_RETENTION: '${BACKUP_RETENTION}'
         ETCD_HEARTBEAT_INTERVAL: '${ETCD_HEARTBEAT_INTERVAL}'
         ETCD_ELECTION_TIMEOUT: '${ETCD_ELECTION_TIMEOUT}'
-        ETCDCTL_CERT_FILE: '/etc/kubernetes/ssl/cert.pem'
-        ETCDCTL_KEY_FILE: '/etc/kubernetes/ssl/key.pem'
-        ETCDCTL_CA_FILE: '/etc/kubernetes/ssl/ca.pem'
-        ETCD_CERT_FILE: '/etc/kubernetes/ssl/cert.pem'
-        ETCD_KEY_FILE: '/etc/kubernetes/ssl/key.pem'
-        ETCD_CA_FILE: '/etc/kubernetes/ssl/ca.pem'
+        ETCDCTL_CERT_FILE: '/etc/etcd/ssl/cert.pem'
+        ETCDCTL_KEY_FILE: '/etc/etcd/ssl/key.pem'
+        ETCDCTL_CA_FILE: '/etc/etcd/ssl/ca.pem'
+        ETCD_CERT_FILE: '/etc/etcd/ssl/cert.pem'
+        ETCD_KEY_FILE: '/etc/etcd/ssl/key.pem'
+        ETCD_CA_FILE: '/etc/etcd/ssl/ca.pem'
 
     volumes:
     - etcd:/pdata:z
