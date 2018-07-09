@@ -238,6 +238,10 @@ kubernetes:
         - --authentication-token-webhook-config-file=/etc/kubernetes/authconfig
         - --runtime-config=authentication.k8s.io/v1beta1=true
         - --external-hostname=kubernetes.kubernetes.rancher.internal
+        - --etcd-cafile=/etc/kubernetes/ssl/ca.pem
+        - --etcd-certfile=/etc/kubernetes/ssl/cert.pem
+        - --etcd-keyfile=/etc/kubernetes/ssl/key.pem
+
         {{- if eq .Values.AUDIT_LOGS "true" }}
         - --audit-log-path=-
         - --feature-gates=AdvancedAuditing=false
