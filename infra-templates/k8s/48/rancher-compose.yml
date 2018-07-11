@@ -256,6 +256,8 @@ etcd:
         - "localhost"
         - "etcd.kubernetes.rancher.internal"
         - "kubernetes-etcd-1"
+        - "kubernetes-etcd-2"
+        - "kubernetes-etcd-3"
     retain_ip: true
     scale_policy:
         increment: 1
