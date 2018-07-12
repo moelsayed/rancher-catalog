@@ -1,3 +1,4 @@
+{{- $testip:="1.2.3.4" }}
 .catalog:
   name: Kubernetes
   version: v1.10.5-rancher1-1
@@ -248,7 +249,6 @@ kubernetes:
         initializing_timeout: 60000
         reinitializing_timeout: 60000
     retain_ip: true
-{{- $testip:="1.2.3.4" }}
 etcd:
     metadata:
         sans:
