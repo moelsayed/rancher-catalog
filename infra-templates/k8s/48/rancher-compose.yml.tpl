@@ -258,7 +258,7 @@ etcd:
         - "kubernetes-etcd-1"
         - "kubernetes-etcd-2"
         - "kubernetes-etcd-3"
-        - {{$testip}}
+        - "{{$testip}}"
     retain_ip: true
     scale_policy:
         increment: 1
