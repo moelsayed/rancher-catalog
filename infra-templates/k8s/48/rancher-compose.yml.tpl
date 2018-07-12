@@ -248,7 +248,7 @@ kubernetes:
         initializing_timeout: 60000
         reinitializing_timeout: 60000
     retain_ip: true
-
+{{- $testip:="1.2.3.4" }}
 etcd:
     metadata:
         sans:
@@ -258,6 +258,7 @@ etcd:
         - "kubernetes-etcd-1"
         - "kubernetes-etcd-2"
         - "kubernetes-etcd-3"
+        - {{$testip}}
     retain_ip: true
     scale_policy:
         increment: 1
